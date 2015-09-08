@@ -12,44 +12,46 @@ import java.util.StringTokenizer;
 public class Parser {
 
     public static Account parseAccount(String providers, String partakers, String comment) throws ScriptException {
-        String[] left = providers.split(";");
-        String[] right = providers.split(";");
+        String[] left = split(providers,";");
+        String[] right = split(partakers, ";");
 
-        ArrayList<Provider> outProvider = null;
-        ArrayList<Partaker> outPartaker = null;
+        ArrayList<Provider> outProvider = new ArrayList<Provider>();
+        ArrayList<Partaker> outPartaker = new ArrayList<Partaker>();
 
         String[] temp;
         int finance = 0;
-        int quota = 0;
+        float quota = 0;
 
 
-        for (String l : left) {
-            temp = l.split("$");
+        for (String part : left) {
+            temp = split(part, "$");
             outProvider.add(new Provider(val(temp[0]), calc(temp[1])));
             finance += calc(temp[1]);
         }
-
-        for (String r : right) {
-            if(r.contains("*")){
-                temp = r.split("*");
-                outPartaker.add(new Partaker(val(temp[0]), 0, val(temp[2])));
-                quota += val(temp[2]);
+//-------------------------------------------------------------------------------
+        for (String part : right) {
+            if(part.contains("*")){ //sahm dare
+                temp = split(part, "*");
+                outPartaker.add(new Partaker(val(temp[0]), 0, val(temp[1])));
+                quota += val(temp[1]);
             }
-            else if(r.contains("$")){
-                temp = r.split("$");
+            else if(part.contains("$")){  //pulesh malume
+                temp = split(part, "$");
                 outPartaker.add(new Partaker(val(temp[0]), calc(temp[1]), 0));
                 finance -= calc(temp[1]);
             }
-            else{
-                outPartaker.add(new Partaker(val(r),0,100));
+            else{  //sahme yek:mosavi
+                outPartaker.add(new Partaker(val(part),0,100));
+                quota += 100;
             }
         }
 
 
         for(int i = 0; i < outPartaker.size() ; i++){
             if (outPartaker.get(i).getAmount() != 0) continue;
-            if (outPartaker.get(i).getQuota() != 0)
-                 outPartaker.get(i).setAmount(finance*(outPartaker.get(i).getQuota()/quota));
+            if (outPartaker.get(i).getQuota() != 0){
+                outPartaker.get(i).setAmount(finance*(outPartaker.get(i).getQuota()/quota));
+            }
         }
 
         Account acc = new Account(outProvider, outPartaker, comment);
@@ -63,7 +65,6 @@ public class Parser {
     }
 
     public static int val(String str){
-        System.out.println(str);
         return Integer.parseInt(str);
     }
 

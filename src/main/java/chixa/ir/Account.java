@@ -24,7 +24,7 @@ public class Account {
 
         for (Provider provider1 : provider) {
             out += provider1.id;
-            out += "\n";
+            out += "$";
             out += provider1.amount;
             out += "\n";
         }
@@ -32,7 +32,7 @@ public class Account {
 
         for (Partaker partaker1 : partaker) {
             out += partaker1.getId();
-            out += "\n";
+            out += "$";
             out += partaker1.getAmount();
             out += "\n";
         }

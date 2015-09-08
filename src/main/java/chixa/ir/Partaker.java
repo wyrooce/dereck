@@ -6,13 +6,13 @@ package chixa.ir;
 public class Partaker {
     private int id;
     private float amount;
-    private int quota = 100;
+    private float quota = 100;
 
-    public int getQuota() {
+    public float getQuota() {
         return quota;
     }
 
-    public void setQuota(int quota) {
+    public void setQuota(float quota) {
         this.quota = quota;
     }
 
