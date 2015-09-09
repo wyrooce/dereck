@@ -6,17 +6,15 @@ import java.util.Date;
 /**
  * Created by MORTEZA.UM on 9/8/2015.
  */
-public class Account {
-    private ArrayList<Provider> provider;
-    private ArrayList<Partaker> partaker;
+public class Event {
+
     private String comment;
     private Date date;
-    private int[][] briefAcc;
+    private float[][] arrayAccount;
 
-    public Account(ArrayList<Provider> prv, ArrayList<Partaker> prt, String comment){
+    public Event(ArrayList<Provider> prv, ArrayList<Partaker> prt, String comment){
         date = new Date();
-        provider = prv;
-        partaker = prt;
+        getByList(prv, prt);
         this.comment = comment;
     }
 
@@ -41,5 +39,21 @@ public class Account {
         return out;
     }
 
+    public float[][] getBrief(){
+        return null;
+    }
 
+    public void getByList(ArrayList<Provider> prov, ArrayList<Partaker> prt){
+        arrayAccount = new int[prov.size()+prt.size()][2];
+        int size = prov.size();
+        for (int i = 0; i < size ; i++) {
+            arrayAccount[i][0] = prov.get(i).id;
+            arrayAccount[i][1] = prov.get(i).amount;
+        }
+        for (int i = 0; i < prt.size() ; i++){
+            arrayAccount[i+size][0] = prt.get(i).getId();
+            arrayAccount[i+size][1] = -1*prt.get(i).getAmount();
+        }
+
+    }
 }

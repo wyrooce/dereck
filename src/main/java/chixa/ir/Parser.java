@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
  */
 public class Parser {
 
-    public static Account parseAccount(String providers, String partakers, String comment) throws ScriptException {
+    public static Event parseAccount(String providers, String partakers, String comment) throws ScriptException {
         String[] left = split(providers,";");
         String[] right = split(partakers, ";");
 
@@ -55,7 +55,7 @@ public class Parser {
         }
 
         //----------------------------------------------------------------
-        Account acc = new Account(outProvider, outPartaker, comment);
+        Event acc = new Event(outProvider, outPartaker, comment);
         return  acc;
     }
 
@@ -71,9 +71,10 @@ public class Parser {
 
     public static int[][] toArrayAcc(ArrayList<Provider> prov, ArrayList<Partaker> prt){
         for (int i = 0; i < prov.size() ; i++) {
-             if ()
+
 
         }
+        return null;
     }
 
     public static String[] split(String subject, String delimiters){
