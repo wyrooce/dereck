@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="Chixa-Accounting:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Chixa_Accounting_jar</output-path>
+    <root id="root">
+      <element id="archive" name="Chixa-Accounting.jar">
+        <element id="module-output" name="Chixa-Accounting" />
+      </element>
+    </root>
+  </artifact>
+</component>
