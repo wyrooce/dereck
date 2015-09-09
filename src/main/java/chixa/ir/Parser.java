@@ -54,6 +54,7 @@ public class Parser {
             }
         }
 
+        //----------------------------------------------------------------
         Account acc = new Account(outProvider, outPartaker, comment);
         return  acc;
     }
@@ -66,6 +67,13 @@ public class Parser {
 
     public static int val(String str){
         return Integer.parseInt(str);
+    }
+
+    public static int[][] toArrayAcc(ArrayList<Provider> prov, ArrayList<Partaker> prt){
+        for (int i = 0; i < prov.size() ; i++) {
+             if ()
+
+        }
     }
 
     public static String[] split(String subject, String delimiters){

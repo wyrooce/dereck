@@ -11,6 +11,7 @@ public class Account {
     private ArrayList<Partaker> partaker;
     private String comment;
     private Date date;
+    private int[][] briefAcc;
 
     public Account(ArrayList<Provider> prv, ArrayList<Partaker> prt, String comment){
         date = new Date();
