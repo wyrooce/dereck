@@ -41,8 +41,8 @@ public class Parser {
                 finance -= calc(temp[1]);
             }
             else{  //sahme yek:mosavi
-                outPartaker.add(new Partaker(val(part),0,100));
-                quota += 100;
+                outPartaker.add(new Partaker(val(part),0,1));
+                quota += 1;
             }
         }
 

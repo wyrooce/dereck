@@ -6,7 +6,7 @@ package chixa.ir;
 public class Partaker {
     private int id;
     private float amount;
-    private float quota = 100;
+    private float quota = 1;
 
     public float getQuota() {
         return quota;
